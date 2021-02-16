@@ -1,0 +1,22 @@
+[Unit]
+Description=LDAP auth proxy
+After=network.target
+StartLimitBurst=5
+StartLimitIntervalSec=0
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=www-data
+Group=www-data
+PermissionsStartOnly=true
+ExecStartPre=
+ExecStart=/usr/local/bin/ldap-auth-proxy
+ExecStartPost=
+TimeoutSec=600
+Restart=on-failure
+RuntimeDirectory=ldap-auth-proxy
+RuntimeDirectoryMode=755
+EnvironmentFile=/etc/ldap-auth-proxy/environment
+RestartSec=1

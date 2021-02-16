@@ -1,0 +1,9 @@
+LDAP_SERVER= <ldaps:// or ldap:// URL without port>
+LDAP_BASE= <dc=something,dc=something,dc=darkside>
+LDAP_BIND_DN= <cn=admin,dc=something,dc=something,dc=darkside>
+LDAP_BIND_PASSWORD= <password>
+LDAP_USER_FILTER=(uid=%s)
+# Your ou might be Users, Customers etc.
+LDAP_GROUP_FILTER=(&(objectClass=groupOfNames)(member=uid=%s,ou=People,o=<oid>,dc=inonit,dc=no))
+GROUP_HEADER=X-Ldap-Group
+HEADERS_MAP=X-LDAP-UID:uid,X-LDAP-CN:cn,X-LDAP-DN:dn
